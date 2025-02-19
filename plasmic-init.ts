@@ -1,10 +1,12 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+import { ArticleList } from "@/components/articles";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
     {
       id: "drbnaXxFpWwy1k7fyHTDgJ",
-      token: "MWMt6zRJHUcf6PFf7NedCpL6h8c49wKJqtGP7tw3dYxz5MsNTLgrWsCShKh9G6RjSqluL51gbUSSXa0D5VvA",
+      token:
+        "MWMt6zRJHUcf6PFf7NedCpL6h8c49wKJqtGP7tw3dYxz5MsNTLgrWsCShKh9G6RjSqluL51gbUSSXa0D5VvA",
     },
   ],
 
@@ -22,4 +24,38 @@ export const PLASMIC = initPlasmicLoader({
 // http://localhost:3000/plasmic-host).  See
 // https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
 
-// PLASMIC.registerComponent(...);
+PLASMIC.registerComponent(ArticleList, {
+  name: "ArticleList",
+  props: {
+    headerText: {
+      type: "string",
+      defaultValue: "Articles",
+      description: "The header text for the list",
+    },
+    maxArticles: {
+      type: "number",
+      defaultValue: 10,
+      description: "Maximum number of articles to display (set to 0 for all)",
+    },
+    showCreatedAt: {
+      type: "boolean",
+      defaultValue: false,
+      description: "Toggle to show article createdAt",
+    },
+    showUpdatedAt: {
+      type: "boolean",
+      defaultValue: false,
+      description: "Toggle to show article updatedAt",
+    },
+    showDescription: {
+      type: "boolean",
+      defaultValue: false,
+      description: "Toggle to show article description",
+    },
+    showDocumentId: {
+      type: "boolean",
+      defaultValue: false,
+      description: "Toggle to show article documentId",
+    },
+  },
+});
